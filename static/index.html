@@ -1,0 +1,144 @@
+<html>
+  <head>
+    <title>CF Msg Viz</title>
+    <style>
+      body {
+        background: url(noisebg.png);
+        background-color: eee;
+        font: 10px sans-serif;
+        margin: 0;
+        padding: 0;
+      }
+
+      .node {
+        cursor: pointer;
+        stroke-width:1.5px;
+      }
+
+      .node.dea {
+        fill: #8A8640;
+        stroke: #142327;
+      }
+
+      .link {
+        fill: none;
+        stroke: #ddd;
+        stroke-width: 1.5px;
+        stroke-dasharray: 1,1;
+      }
+
+      .curved-link {
+        fill: none;
+        stroke: #142327;
+        stroke-width: 1.5px;
+      }
+
+      .dea-marker {
+        fill: #142327;
+        stroke: none;
+      }
+
+      .sibling {
+        fill: none;
+        stroke-width: 1.5px;
+        stroke-dasharray: 5,5;
+      }
+
+      text {
+        pointer-events: none;
+        text-shadow: 0 1px 0 #fff, 1px 0 0 #fff, 0 -1px 0 #fff, -1px 0 0 #fff;
+      }
+
+      path.selector {
+        -webkit-animation: pulsate 1s ease-out;
+        -webkit-animation-iteration-count: infinite;
+      }
+
+      hr {
+        border: 0;
+        width: 90%;
+        color: #f00;
+        background-color: #999;
+        height: 1px;
+        margin-top : 10px;
+        margin-bottom : 10px;
+      }
+
+      #legend {
+        width : 350px;
+        height : 210px;
+        padding : 10px;
+        background : #fff;
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        display: block;
+        -webkit-box-shadow: 10px 10px 93px -22px rgba(26,26,26,1);
+        -moz-box-shadow: 10px 10px 93px -22px rgba(26,26,26,1);
+        box-shadow: 10px 10px 93px -22px rgba(26,26,26,1);
+        border-radius: 4px 4px 4px 4px;
+        -moz-border-radius: 4px 4px 4px 4px;
+        -webkit-border-radius: 4px 4px 4px 4px;
+        border: 1px solid #999;
+      }
+
+      #legend > h2 {
+        font-size : 2em;
+        margin : 2px;
+      }
+
+      #legend > ul, #legend > ul > li {
+        list-style-type : none;
+        margin : 0;
+        padding : 0;
+      }
+
+      #legend > ul > li { display : none; }
+      #legend > ul > li > b.label { display : inline-block; width : 100px; }
+
+      @-webkit-keyframes pulsate {
+        0% {-webkit-transform: scale(0.1, 0.1); opacity: 0.0;}
+        50% {opacity: 1.0;}
+        100% {-webkit-transform: scale(2.2, 2.2); opacity: 0.0;}
+      }
+    </style>
+    <script src="d3.min.js"></script>
+    <script src="underscore-min.js"></script>
+    <script src="chroma.min.js"></script>
+  </head>
+  <body>
+    <script src="d3_client.js"></script>
+    <div id="legend">
+      <h2><span id="name_value"></span>  (<span id="node_type_value"></span>)</h2>
+      <hr />
+
+      <ul id="value_table">
+
+        <!-- Droplet properties -->
+
+        <li><b class="label">CPU Usage</b> : <span id="cpu_usage_value"></span></li>
+        <li><b class="label">Disk Quota</b> : <span id="disk_quota_value"></span></li>
+        <li><b class="label">Disk Usage</b> : <span id="disk_usage_value"></span></li>
+        <li><b class="label">Droplet ID</b> : <span id="droplet_value"></span></li>
+<!--    <li><b class="label">Name</b> : <span id="fds_quota_value"></span></li> -->
+        <li><b class="label">Host</b> : <span id="host_value"></span></li>
+        <li><b class="label">Instance Index</b> : <span id="index_value"></span></li>
+        <li><b class="label">Instance ID</b> : <span id="instance_value"></span></li>
+        <li><b class="label">Memory Quota</b> : <span id="mem_quota_value"></span></li>
+        <li><b class="label">Memory Usage</b> : <span id="mem_usage_value"></span></li>
+        <li><b class="label">Port</b> : <span id="port_value"></span></li>
+        <li><b class="label">State</b> : <span id="state_value"></span></li>
+        <li><b class="label">Uptime</b> : <span id="uptime_value"></span></li>
+        <li><b class="label">URIs</b> : <span id="uris_value"></span></li>
+
+
+        <li><b class="label">IP</b> : <span id="ip_value"></span></li>
+        <li><b class="label">Max Memory</b> : <span id="Max_memory_value"></span></li>
+        <li><b class="label">Reserved Memory</b> : <span id="Reserved_memory_value"></span></li>
+        <li><b class="label">Used Memory</b> : <span id="Used_memory_value"></span></li>
+
+      </ul>
+
+    </div>
+  </body>
+</html>
